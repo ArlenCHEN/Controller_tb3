@@ -1,0 +1,14 @@
+mass: 2.4
+gravity: 9.81
+
+ctrl_rate: 100
+
+gain:
+  Kp0:  1.0
+  Kp1:  1.0
+  Kp2:  1.0
+  Kv0:  0.0
+  Kv1:  0.0
+  Kv2:  0.0
+  Kyaw: 1.0
+
