@@ -19,7 +19,8 @@
 using namespace std;
 
 // cmd publisher
-ros::Publisher cmd_vel_pub;
+// ros::Publisher cmd_vel_pub;
+
 // odometry data subscriber
 ros::Subscriber odom_sub;
 // cmd subscriber
@@ -29,17 +30,15 @@ int main(int argc, char **argv)
 {
   ros::init(argc, argv, "control");
   ros::NodeHandle n("~");
-  tf::TransformListener m_listener;
-  tf::StampedTransform transform;
 
   // Create a Parameter object to read parameters from launch file
   Parameter param;
 
-  // Create a PID object
-  PID pid(param);
-
   // Read parameters with ros::NodeHandle
   param.config_from_ros_handle(n);
+
+  // Create a PID object
+  PID pid(param);
 
   // Define a cmd publisher
   pid.ctrl_pub = n.advertise<geometry_msgs::Twist>("cmd_vel", 1);
@@ -49,17 +48,16 @@ int main(int argc, char **argv)
 
   // Receive the odometry data 
   odom_sub = n.subscribe<nav_msgs::Odometry>("odom", 
-                                               1000,
-                                               boost::bind(&Odometry_Data::feed, &pid.odom_data, _1),
-                                               ros::VoidConstPtr(),
-                                               ros::TransportHints().tcpNoDelay());
+                                              1000,
+                                              boost::bind(&Odometry_Data::feed, &pid.odom_data, _1),
+                                              ros::VoidConstPtr(),
+                                              ros::TransportHints().tcpNoDelay());
   // Receive the cmd data from planner
   cmd_sub = n.subscribe<turtlebot3_msgs::Command>("/tb3_cmd", 
-                                               1000,
-                                               boost::bind(&Desired_State::feed, &pid.desired_data, _1),
-                                               ros::VoidConstPtr(),
-                                               ros::TransportHints().tcpNoDelay());
-
+                                              1000,
+                                              boost::bind(&Desired_State::feed, &pid.desired_data, _1),
+                                              ros::VoidConstPtr(),
+                                              ros::TransportHints().tcpNoDelay());
   ros::Rate r(2000.0); // ROS spins 2000 frames per second
   pid.last_ctrl_time = ros::Time::now();
 

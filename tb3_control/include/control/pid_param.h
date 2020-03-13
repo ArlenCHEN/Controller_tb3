@@ -2,7 +2,7 @@
 #define PID_PARAM_H_
 
 #include <iostream>
-
+#include <string>
 #include <ros/ros.h>
 
 class Parameter
@@ -16,6 +16,7 @@ public:
 
     };
 
+    // std::string control_mode;
     Gain pid_gain;
     double mass;
     double gravity;

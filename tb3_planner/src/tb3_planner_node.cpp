@@ -38,6 +38,9 @@ void cmdCallback(const ros::TimerEvent& e)
     cmd.position.z = 0;
     double x_dot = -radius * M_PI * sin(M_PI * t_cur / n + 3 * M_PI / 2) / n;
     double y_dot =  radius * M_PI * cos(M_PI * t_cur / n + 3 * M_PI / 2) / n;
+    cmd.velocity.x = x_dot;
+    cmd.velocity.y = y_dot;
+    cmd.velocity.z = 0;
 #else
     #if 0
     // Eight shape traj
@@ -46,6 +49,9 @@ void cmdCallback(const ros::TimerEvent& e)
     cmd.position.z = 0;
     double x_dot = radius * M_PI * cos(M_PI * t_cur / n) / n;
     double y_dot = radius * M_PI * (pow(cos(M_PI * t_cur / n), 2) - pow(sin(M_PI * t_cur / n), 2)) / n;
+    cmd.velocity.x = x_dot;
+    cmd.velocity.y = y_dot;
+    cmd.velocity.z = 0;
     #else
     // Heart shape traj
 
@@ -55,6 +61,10 @@ void cmdCallback(const ros::TimerEvent& e)
     cmd.position.z = 0;
     double x_dot = 2 * radius * sin(M_PI * t_cur / n) * cos(M_PI * t_cur / n) - 2 * radius * sin(M_PI * t_cur / n) * (1 - cos(M_PI * t_cur / n));
     double y_dot = 2 * radius * (cos(M_PI * t_cur / n) * (1 - cos(M_PI * t_cur / n)) + pow(sin(M_PI * t_cur / n), 2));
+
+    cmd.velocity.x = x_dot;
+    cmd.velocity.y = y_dot;
+    cmd.velocity.z = 0;
 
     // True heart
     // cmd.position.y = 16 * pow(sin(M_PI * t_cur / n), 3);

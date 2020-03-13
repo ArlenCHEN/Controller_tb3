@@ -1,0 +1,23 @@
+time_step: 0.1
+roh: 15 #15
+time_horizon: 150 #150
+is_limit_speed: false
+linear_speed_thresh: 1.5
+angular_speed_thresh: 3.0
+
+Q:
+  q_0: 3.0 # bias to x   3.0
+  q_1: 3.7 # bias to y   4.2
+  q_2: 8.5 # bias to yaw 8.5 for 5; 35.5 for 10
+
+start_point:
+  s_0: 0 # position x
+  s_1: 0 # position y
+  s_2: 0 # yaw
+  s_3: 0 # speed value
+
+end_point:
+  e_0: 5.0
+  e_1: -5.0
+  e_2: -0.785
+  e_3: 0.1

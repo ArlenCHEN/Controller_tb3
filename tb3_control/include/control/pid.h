@@ -55,14 +55,12 @@ public:
     Desired_State desired_data;
     Odometry_Data odom_data;
     
-
     ros::Publisher ctrl_pub;
     ros::Time last_ctrl_time;
 
     Eigen::Matrix3d Kp;
     Eigen::Matrix3d Kv;
     double Kyaw;
-    
 
     PID(Parameter& param_):param(param_)
     {

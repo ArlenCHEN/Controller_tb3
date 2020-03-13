@@ -31,3 +31,12 @@ src/pid_param.cpp)
  target_link_libraries(${PROJECT_NAME}_node
    ${catkin_LIBRARIES}
  )
+
+ add_executable(lqr_control_node
+ src/lqr_main.cpp
+ src/lqr_control.cpp
+ src/lqr_param.cpp)
+
+ target_link_libraries(lqr_control_node
+   ${catkin_LIBRARIES}
+ )

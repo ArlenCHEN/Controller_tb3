@@ -1,0 +1,14 @@
+<launch>
+
+<!-- <node pkg="tb3_planner" type="tb3_planner_node" name="tb3_planner_node" output="screen">
+
+</node> -->
+
+<node pkg = "tb3_control" type="lqr_control_node" name="lqr_control_node" output="screen">
+    <remap from="tb3_control_node/cmd_vel" to="/lqr_control_node/cmd_vel"/>
+    <remap from="tb3_control_node/odom" to="/lqr_control_node/odom"/>
+
+    <rosparam command="load" file="$(find tb3_control)/config/lqr_param_tb3.yaml"/>
+</node>
+
+</launch>

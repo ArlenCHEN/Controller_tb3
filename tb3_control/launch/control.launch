@@ -14,7 +14,6 @@
         <remap from="tb3_control_node/visualization_marker" to="visualization_marker"/>
                 
         <rosparam command="load"  file="$(find tb3_control)/config/ctrl_param_tb3.yaml"/>
-
     </node>
 
 

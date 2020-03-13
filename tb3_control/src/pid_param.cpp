@@ -16,6 +16,7 @@ void Parameter::config_from_ros_handle(const ros::NodeHandle& nh)
 
     read_params(nh, "gain/Kyaw", pid_gain.Kyaw);
 
+    // read_params(nh, "control_mode", control_mode);
     read_params(nh, "mass", mass);
     read_params(nh, "gravity", gravity);
     read_params(nh, "ctrl_rate", ctrl_rate);

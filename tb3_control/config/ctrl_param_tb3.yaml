@@ -1,5 +1,6 @@
 mass: 2.4
 gravity: 9.81
+control_mode: "PID"
 
 ctrl_rate: 100
 
